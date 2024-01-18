@@ -1,0 +1,18 @@
+nome=input("Digite um funcionário: ")
+empresa=input("Digite a instituição: ")
+qtde_funcionarios=int(input("Digite a qtde de funcionários: "))
+mediaMensalidade=float(input("Digite a média da mensalidade: "))
+print(nome + " trabalha na empresa " + empresa)
+print("Possui: ", qtde_funcionarios, " funcionarios.")
+print("A média da mensalidade é de: " + str(mediaMensalidade))
+
+
+O código selecionado solicita que o usuário insira informações sobre um funcionário e uma empresa e, em seguida, imprime as informações inseridas.
+Aqui está uma explicação passo a passo do código:
+1. `nome=input("Digite um funcionário: ")` - Esta linha solicita que o usuário insira o nome de um funcionário e atribui o valor inserido à variável `nome `.
+2. `empresa=input("Digite a instituição: ")` - Esta linha solicita ao usuário que digite o nome de uma empresa e atribui o valor digitado à variável `empresa`. 
+3. `qtde_funcionarios=int(input("Digite a qtde de funcionários: "))` - Esta linha solicita que o usuário insira o número de funcionários da empresa e atribui o valor inserido (convertido para um número inteiro) à variável ` qtde_funcionarios`.
+4. `mediaMensalidade=float(input("Digite a média da mensalidade: "))` - Esta linha solicita que o usuário insira o salário médio mensal e atribui o valor inserido (convertido em float) à variável `mediaMensalidade`.
+5. `print(nome + " trabalha na empresa " + empresa)` - Esta linha imprime o nome do funcionário e o nome da empresa. 
+6. `print("Possui: ", qtde_funcionarios, " funcionarios.")` - Esta linha imprime o número de funcionários da empresa.
+7. `print("A média da mensalidade é de: " + str(mediaMensalidade))` - Esta linha imprime o salário médio mensal.
