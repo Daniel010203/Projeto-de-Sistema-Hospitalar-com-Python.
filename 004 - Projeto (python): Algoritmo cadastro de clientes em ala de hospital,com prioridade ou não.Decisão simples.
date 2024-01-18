@@ -1,0 +1,140 @@
+#Exercicio de cadastro de clientes em ala de hospital,com prioridade ou não.Decisão simples.
+# Importa o módulo sqlite3
+import sqlite3
+
+# Cria uma classe para representar um paciente
+class Paciente:
+    def __init__(self, nome, idade, prioridade):
+        self.nome = nome
+        self.idade = idade
+        self.prioridade = prioridade
+
+    def __str__(self):
+        return f"O paciente {self.nome} possui {self.idade} anos e atendimento prioritário? {self.prioridade}"
+
+# Cria uma lista para armazenar os objetos da classe paciente
+pacientes = []
+
+# Cria uma função para cadastrar um paciente
+def cadastrar():
+    # Recebe os dados do paciente
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+    # Verifica se o paciente tem prioridade
+    if idade > 65:
+        prioridade = "SIM"
+    else:
+        prioridade = "NÃO"
+    # Cria um objeto da classe paciente com os dados recebidos
+    paciente = Paciente(nome, idade, prioridade)
+    # Adiciona o objeto à lista de pacientes
+    pacientes.append(paciente)
+    # Conecta ao banco de dados
+    conexao = sqlite3.connect("pacientes.db")
+    cursor = conexao.cursor()
+    # Cria a tabela pacientes se não existir
+    cursor.execute("CREATE TABLE IF NOT EXISTS pacientes (nome TEXT, idade INTEGER, prioridade TEXT)")
+    # Insere os dados do paciente na tabela
+    cursor.execute("INSERT INTO pacientes VALUES (?, ?, ?)", (nome, idade, prioridade))
+    # Salva as alterações
+    conexao.commit()
+    # Fecha a conexão
+    conexao.close()
+    # Exibe uma mensagem de confirmação
+    print("Paciente cadastrado com sucesso!")
+
+# Cria uma função para listar os pacientes cadastrados
+def listar():
+    # Verifica se a lista de pacientes está vazia
+    if len(pacientes) == 0:
+        print("Não há pacientes cadastrados.")
+    else:
+        # Percorre a lista de pacientes e exibe os dados de cada um
+        for paciente in pacientes:
+            print(paciente)
+
+# Cria uma função para buscar um paciente específico
+def buscar():
+    # Recebe o nome do paciente a ser buscado
+    nome = input("Digite o nome do paciente: ")
+    # Conecta ao banco de dados
+    conexao = sqlite3.connect("pacientes.db")
+    cursor = conexao.cursor()
+    # Executa uma consulta SQL para obter os dados do paciente pelo nome
+    cursor.execute("SELECT * FROM pacientes WHERE nome = ?", (nome,))
+    # Obtém o resultado da consulta
+    resultado = cursor.fetchall()
+    # Fecha a conexão
+    conexao.close()
+    # Verifica se o resultado está vazio
+    if len(resultado) == 0:
+        print("Não há paciente com esse nome.")
+    else:
+        # Cria um objeto da classe paciente com os dados do resultado
+        paciente = Paciente(resultado[0][0], resultado[0][1], resultado[0][2])
+        # Exibe os dados do paciente
+        print(paciente)
+
+# Cria um loop para exibir o menu e receber a opção do usuário
+while True:
+    # Exibe o menu
+    print("Escolha uma opção:")
+    print("1 - Cadastrar paciente")
+    print("2 - Listar pacientes")
+    print("3 - Buscar paciente")
+    print("4 - Sair")
+    # Recebe a opção do usuário
+    opcao = int(input())
+    # Verifica a opção do usuário e chama a função correspondente
+    if opcao == 1:
+        cadastrar()
+    elif opcao == 2:
+        listar()
+    elif opcao == 3:
+        buscar()
+    elif opcao == 4:
+        break
+    else:
+        print("Opção inválida.")
+
+Aqui está uma explicação detalhada do código:
+
+Classe Paciente:
+
+__init__(self, nome, idade, prioridade): O método de inicialização da classe define três atributos: nome, idade e prioridade.
+__str__(self): O método __str__ é implementado para fornecer uma representação de string legível do objeto Paciente.
+Lista de Pacientes:
+
+pacientes = []: Uma lista vazia é criada para armazenar objetos da classe Paciente.
+Função cadastrar():
+
+Recebe dados do usuário (nome e idade).
+Determina se o paciente tem prioridade com base na idade.
+Cria um objeto Paciente com os dados fornecidos.
+Adiciona o paciente à lista pacientes.
+Conecta-se ao banco de dados SQLite (pacientes.db), cria uma tabela se não existir e insere os dados do paciente.
+Exibe uma mensagem de confirmação.
+Função listar():
+
+Verifica se a lista de pacientes está vazia.
+Se não estiver vazia, percorre a lista e imprime os dados de cada paciente.
+Função buscar():
+
+Recebe o nome do paciente a ser buscado.
+Conecta-se ao banco de dados, executa uma consulta SQL para obter os dados do paciente pelo nome.
+Se o resultado não estiver vazio, cria um objeto Paciente com os dados do resultado e exibe os dados do paciente.
+Se o resultado estiver vazio, exibe uma mensagem informando que não há paciente com esse nome.
+Loop de Menu:
+
+Um loop while True é usado para exibir um menu interativo ao usuário.
+O menu inclui opções para cadastrar pacientes, listar pacientes, buscar pacientes e sair.
+O usuário pode escolher uma opção digitando o número correspondente.
+O programa chama a função correspondente com base na opção escolhida.
+O loop continua até que o usuário escolha a opção de sair (opção 4).
+
+#Neste código implementamos as seguintes melhorias:
+Você pode usar uma classe para representar um paciente, com atributos como nome, idade, prioridade e outros dados relevantes. Isso facilita o armazenamento, a manipulação e a exibição dos dados dos pacientes.
+Você pode usar uma lista para armazenar os objetos da classe paciente, e usar métodos como append, remove, sort e index para gerenciar a lista. Você também pode usar compreensão de listas para filtrar ou modificar os elementos da lista de forma mais concisa.
+Você pode usar funções para modularizar o seu código e evitar repetições. Por exemplo, você pode criar uma função para cadastrar um paciente, outra para listar os pacientes cadastrados, outra para buscar um paciente específico, etc. Você pode usar parâmetros e retornos para passar dados entre as funções.
+Você pode usar estruturas de controle como if, elif e else para implementar a lógica do seu programa. Por exemplo, você pode usar um if para verificar se a idade do paciente é maior que 65 e atribuir a prioridade como “SIM” ou “NÃO”. Você também pode usar um elif para verificar outras condições, como se o paciente tem alguma comorbidade ou se está grávida.
+Você pode usar o módulo sqlite3 para conectar o seu programa a um banco de dados SQLite e armazenar os dados dos pacientes de forma persistente. Você pode usar o método execute para executar comandos SQL, como criar tabelas, inserir, atualizar, deletar e consultar dados. Você pode usar o método fetchall para obter os resultados das consultas.
