@@ -1,0 +1,30 @@
+nome=input("Digite seu nome: ")
+idade=int(input("Digite a idade: "))
+doenca_infectocontagiosa=input("Suspeita de doença infectocontagiosa? ").upper()
+
+#PRIMEIRO PROBLEMA A SER RESOLVIDO
+
+if doenca_infectocontagiosa=="SIM":
+    print("Encaminhe o paciente para a sala AMARELA")
+elif doenca_infectocontagiosa=="NÃO":
+    print("Encaminhe o paciente para a sala BRANCA")
+
+#SEGUNDO PROBLEMA A SER RESOLVIDO
+if idade>=65:
+    print("Paciente COM prioridade")
+else:
+    genero=input("Digite o gênero do paciente: ").upper()
+    if genero=="FEMININO" and idade>10:
+        gravidez=input("A paciente está grávida? ").upper()
+        if gravidez=="SIM":
+            print("Paciente COM prioridade")
+        else:
+            print("Paciente SEM prioridade")
+    else:
+        print("Paciente SEM prioridade")
+
+
+#O código selecionado é um script Python que solicita ao usuário seu nome, idade e se há suspeita de doença infecciosa. 
+Em seguida, ele resolve dois problemas com base nas informações: 
+1. O roteiro determina para qual sala enviar o paciente com base na suspeita de doença infecciosa. Se a resposta for “SIM” (sim), o paciente é encaminhado para a sala amarela. Se a resposta for “NÃO” (não), o paciente é encaminhado para a sala branca. 
+2. O roteiro determina a prioridade do paciente com base em sua idade e sexo. Se o paciente tiver 65 anos ou mais, são considerados prioritários. Caso contrário, o roteiro pede o sexo do paciente. Se a paciente for do sexo feminino e tiver mais de 10 anos, pergunta se está grávida. Se a resposta for “SIM” (sim), o paciente é considerado prioritário. Caso contrário, o paciente não é considerado prioritário.
