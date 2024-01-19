@@ -1,0 +1,74 @@
+#Algoritimo de cadastro de clientes em ala de hospital,com doença infecto contagiosa.Decisão encadeada.
+
+nome=input("Digite o nome: ")
+idade=int(input("Digite a idade: "))
+doenca_infectocontagiosa=input("Suspeita de doença infectocontagiosa? ").upper()
+if idade>= 65:
+    print("Paciente COM prioridade")
+    if doenca_infectocontagiosa=="SIM":
+        print("Encaminhe o paciente para a sala AMARELA")
+    elif doenca_infectocontagiosa=="NÃO":
+        print("Encaminhe o paciente para sala BRANCA")
+    else:
+        print("Responda a suspeita de doença infectocontagiosa com SIM ou NÃO")
+else:
+    print("Paciente SEM prioridade")
+    if doenca_infectocontagiosa=="SIM":
+        print("Encaminho o paciente para a sala AMARELA")
+    elif doenca_infectocontagiosa=="NÃO":
+        print("Encaminhe para a sala BRANCA")
+    else:
+        print("Responda a suspeita de doença infectologista com SIM ou NÃO")
+
+# Descrição do código acima:
+Um programa que solicita ao usuário o nome, a idade e a suspeita de doença infectocontagiosa de um paciente, e em seguida imprime na tela a prioridade e a sala de atendimento adequadas para o paciente, de acordo com as seguintes regras:
+
+Se a idade for maior ou igual a 65 anos, o paciente tem prioridade.
+Se a suspeita de doença infectocontagiosa for “SIM”, o paciente deve ser encaminhado para a sala amarela.
+Se a suspeita de doença infectocontagiosa for “NÃO”, o paciente deve ser encaminhado para a sala branca.
+Se a suspeita de doença infectocontagiosa for diferente de “SIM” ou “NÃO”, o programa pede para o usuário responder com “SIM” ou “NÃO”.
+
+Agora vamos melhorar o código com algumas novas funções:                                        
+
+Use espaços em branco para separar os operadores e os operandos, e para deixar o código mais legível. Por exemplo, em vez de idade>= 65, escreva idade >= 65.
+Use nomes de variáveis mais descritivos e consistentes, que indiquem o tipo e o significado dos dados que elas armazenam. Por exemplo, em vez de nome, use nome_paciente; em vez de doenca_infectocontagiosa, use suspeita_infectocontagiosa.
+Use comentários para explicar o propósito e o funcionamento do seu código, especialmente se ele for complexo ou não óbvio. Por exemplo, você pode escrever um comentário no início do programa, explicando o que ele faz e quais são as regras de prioridade e de sala de atendimento.
+Evite repetir código desnecessariamente, pois isso dificulta a manutenção e a alteração do programa. Por exemplo, você pode usar uma variável para armazenar a mensagem de prioridade do paciente, e outra variável para armazenar a mensagem de sala de atendimento, e depois imprimir essas variáveis, em vez de repetir os comandos print para cada condição.
+Use estruturas de dados mais adequadas para armazenar e manipular informações relacionadas. Por exemplo, você pode usar um dicionário para mapear as respostas de suspeita de doença infectocontagiosa para as salas de atendimento correspondentes, e depois acessar esse dicionário com a chave fornecida pelo usuário, em vez de usar vários if e elif.
+Use funções para modularizar o seu código e facilitar a reutilização e a organização. Por exemplo, você pode criar uma função para solicitar os dados do paciente ao usuário, e outra função para determinar a prioridade e a sala de atendimento do paciente, e depois chamar essas funções no programa principal.
+A seguir, eu vou mostrar como ficaria o seu código com essas melhorias:
+
+# Programa que determina a prioridade e a sala de atendimento de um paciente de acordo com a sua idade e a suspeita de doença infectocontagiosa.
+
+# Dicionário que mapeia as respostas de suspeita de doença infectocontagiosa para as salas de atendimento.
+salas = {"SIM": "AMARELA", "NÃO": "BRANCA"}
+
+# Função que solicita os dados do paciente ao usuário e retorna um dicionário com esses dados.
+def obter_dados_paciente():
+    dados = {} # Cria um dicionário vazio para armazenar os dados do paciente
+    dados["nome_paciente"] = input("Digite o nome do paciente: ") # Solicita e armazena o nome do paciente
+    dados["idade_paciente"] = int(input("Digite a idade do paciente: ")) # Solicita e converte para inteiro a idade do paciente
+    dados["suspeita_infectocontagiosa"] = input("Suspeita de doença infectocontagiosa? ").upper() # Solicita e converte para maiúscula a suspeita de doença infectocontagiosa
+    return dados # Retorna o dicionário com os dados do paciente
+
+# Função que determina a prioridade e a sala de atendimento de um paciente, de acordo com os seus dados
+def determinar_prioridade_sala(dados):
+    prioridade = "" # Cria uma variável vazia para armazenar a mensagem de prioridade do paciente
+    sala = "" # Cria uma variável vazia para armazenar a mensagem de sala de atendimento do paciente
+    if dados["idade_paciente"] >= 65: # Se a idade do paciente for maior ou igual a 65 anos
+        prioridade = "Paciente COM prioridade" # Define a mensagem de prioridade como "Paciente COM prioridade"
+    else: # Senão
+        prioridade = "Paciente SEM prioridade" # Define a mensagem de prioridade como "Paciente SEM prioridade"
+    if dados["suspeita_infectocontagiosa"] in salas: # Se a suspeita de doença infectocontagiosa estiver no dicionário de salas
+        sala = f"Encaminhe o paciente para a sala {salas[dados['suspeita_infectocontagiosa']]}" # Define a mensagem de sala de atendimento usando o valor correspondente no dicionário de salas
+    else: # Senão
+        sala = "Responda a suspeita de doença infectocontagiosa com SIM ou NÃO" # Define a mensagem de sala de atendimento como "Responda a suspeita de doença infectocontagiosa com SIM ou NÃO"
+    return prioridade, sala # Retorna a mensagem de prioridade e a mensagem de sala de atendimento
+
+# Programa principal
+dados_paciente = obter_dados_paciente() # Chama a função obter_dados_paciente e armazena o resultado na variável dados_paciente
+prioridade_paciente, sala_paciente = determinar_prioridade_sala(dados_paciente) # Chama a função determinar_prioridade_sala com o argumento dados_paciente e armazena o resultado nas variáveis prioridade_paciente e sala_paciente
+print(prioridade_paciente) # Imprime a mensagem de prioridade do paciente
+print(sala_paciente) # Imprime a mensagem de sala de atendimento do paciente
+
+                                                                            
