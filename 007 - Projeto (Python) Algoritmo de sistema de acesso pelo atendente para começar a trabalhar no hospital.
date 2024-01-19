@@ -1,0 +1,64 @@
+#Exercicio de cadastro de clientes em ala de hospital,com prioridade ou não.Decisão.
+
+nivel=input("Digite o nível de acesso: ").upper()
+if nivel=="ADM" or nivel=="USR":
+    genero=input("Digite o seu gênero: ").upper()
+    if nivel=="ADM":
+        if genero=="FEMININO":
+            print("Olá administradora")
+        else:
+            print("Olá administrador")
+    else:
+        if genero=="FEMININO":
+            print("Olá usuária")
+        else:
+            print("Olá usuário")
+elif nivel=="GUEST":
+    print("Olá visitante")
+else:
+    print("Olá desconhecido(a)")
+
+um programa que solicita ao usuário o nível de acesso e o gênero, e em seguida imprime na tela uma saudação personalizada, de acordo com as seguintes regras:
+
+Se o nível de acesso for “ADM” ou “USR”, o programa solicita o gênero do usuário.
+Se o nível de acesso for “ADM”, o programa saúda o usuário como “Olá administradora” ou “Olá administrador”, dependendo do gênero informado.
+Se o nível de acesso for “USR”, o programa saúda o usuário como “Olá usuária” ou “Olá usuário”, dependendo do gênero informado.
+Se o nível de acesso for “GUEST”, o programa saúda o usuário como “Olá visitante”.
+Se o nível de acesso for diferente de “ADM”, “USR” ou “GUEST”, o programa saúda o usuário como “Olá desconhecido(a)”.
+
+Algumas dicas para melhorar o seu código são:
++Use constantes para armazenar os valores possíveis para o nível de acesso e o gênero, em vez de usar strings literais. Isso facilita a manutenção e a alteração do código, além de evitar erros de digitação. Por exemplo, você pode definir as constantes no início do programa, como:
+# Constantes para o nível de acesso
+ADM = "ADM"
+USR = "USR"
+GUEST = "GUEST"
+
+# Constantes para o gênero
+FEMININO = "FEMININO"
+MASCULINO = "MASCULINO"
+
++Use um dicionário para mapear os níveis de acesso e os gêneros para as saudações correspondentes, em vez de usar vários if e else. Isso torna o código mais conciso e organizado, além de facilitar a adição ou remoção de novas saudações. Por exemplo, você pode definir o dicionário no início do programa, como:
+# Dicionário para as saudações
+saudacoes = {
+    ADM: {
+        FEMININO: "Olá administradora",
+        MASCULINO: "Olá administrador"
+    },
+    USR: {
+        FEMININO: "Olá usuária",
+        MASCULINO: "Olá usuário"
+    },
+    GUEST: {
+        FEMININO: "Olá visitante",
+        MASCULINO: "Olá visitante"
+    }
+}
+
++Use o método get para acessar os valores do dicionário, em vez de usar a notação de colchetes. Isso permite que você especifique um valor padrão para o caso em que a chave não exista no dicionário, evitando erros de chave não encontrada. Por exemplo, você pode usar o método get para obter a saudação apropriada, como:
+# Obtém a saudação para o nível de acesso e o gênero informados, ou uma saudação padrão se não existir
+saudacao = saudacoes.get(nivel, {}).get(genero, "Olá desconhecido(a)")
+
+Mais dicas para o código:
+Use recursos de cibersegurança para proteger os dados do usuário e evitar ataques maliciosos. Por exemplo, você pode usar o módulo hashlib para criptografar as senhas dos usuários, em vez de armazená-las em texto simples. Você também pode usar o módulo socket para estabelecer uma conexão segura entre o cliente e o servidor, usando o protocolo SSL/TLS. 
+Use APIs para integrar o seu programa com outros serviços ou aplicações, ampliando as suas funcionalidades e recursos. Por exemplo, você pode usar a API do Google Maps para obter a localização do usuário, a API do Twilio para enviar mensagens de texto ou voz para o usuário, ou a API do Spotify para reproduzir músicas para o usuário.
+Use o seu programa para solucionar problemas reais em softwares, adaptando-o às necessidades e especificações de cada projeto. Por exemplo, você pode usar o seu programa para criar um sistema de controle de acesso para um site ou aplicativo, verificando o nível de acesso e o gênero do usuário antes de permitir o acesso a determinadas páginas ou funcionalidades. Você também pode usar o seu programa para criar um chatbot que interage com o usuário, usando a saudação personalizada como uma forma de estabelecer uma conexão e engajamento.
