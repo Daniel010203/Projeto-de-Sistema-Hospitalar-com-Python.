@@ -1,0 +1,68 @@
+nome = input ("Informe o nome :")
+idade = int(input("Informe a idade: "))
+doenca_Infecontagiosa = input("Pussui doença infectocontagiosa ? ").upper()
+
+if doenca_Infecontagiosa =="SIM":
+    print("Encaminhe o paciente para a sala amarela")
+elif doenca_Infecontagiosa == "NÃO":
+    print("Encaminhe o paciente para a sala branca")
+else:
+    print("Responda ao questionário de doença infectocontagiosa com SIM ou NÃO.")
+
+if idade >= 65:
+    print("Paciente com prioridade.")
+else:
+    genero = input("Digite o genero do paciente: ").upper()
+    if genero =="FEMININO" and idade >=10:
+        gravidez = input("A paciente está grávida ?").upper()
+        if gravidez =="SIM":
+            print("Paciente com prioridade")
+        else:
+            print("Paciente sem prioridade")
+    else:
+       print("Paciente sem prioridade.")
+print("Resposta ao questionário da idade do paciente.")
+
+Explicando o código acima:
+Vamos analisar o código linha por linha:
+
+nome = input("Informe o nome: "): Solicita ao usuário que informe o nome do paciente e armazena o valor na variável nome.
+
+idade = int(input("Informe a idade: ")): Solicita ao usuário que informe a idade do paciente, converte a entrada para um número inteiro e armazena o valor na variável idade.
+
+doenca_Infecontagiosa = input("Possui doença infectocontagiosa? ").upper(): Solicita ao usuário se o paciente possui doença infectocontagiosa, converte a resposta para letras maiúsculas (usando .upper()) e armazena o valor na variável doenca_Infecontagiosa.
+
+Estrutura condicional usando if, elif e else:
+
+if doenca_Infecontagiosa == "SIM":: Verifica se a resposta sobre a doença infectocontagiosa é "SIM".
+
+print("Encaminhe o paciente para a sala amarela"): Se a resposta for "SIM", o programa recomenda encaminhar o paciente para a sala amarela.
+elif doenca_Infecontagiosa == "NÃO":: Se a resposta não for "SIM", verifica se é "NÃO".
+
+print("Encaminhe o paciente para a sala branca"): Se a resposta for "NÃO", o programa recomenda encaminhar o paciente para a sala branca.
+else:: Se a resposta não for nem "SIM" nem "NÃO",
+
+print("Responda ao questionário de doença infectocontagiosa com SIM ou NÃO."): O usuário é solicitado a responder ao questionário com "SIM" ou "NÃO".
+if idade >= 65:: Verifica se a idade do paciente é maior ou igual a 65.
+
+print("Paciente com prioridade."): Se a idade for maior ou igual a 65, o programa indica que o paciente tem prioridade.
+else:: Se a idade do paciente for menor que 65, o bloco de código dentro deste bloco será executado.
+
+genero = input("Digite o gênero do paciente: ").upper(): Solicita ao usuário que digite o gênero do paciente, converte a resposta para letras maiúsculas e armazena o valor na variável genero.
+
+Estrutura condicional aninhada:
+
+if genero == "FEMININO" and idade >= 10:: Verifica se o gênero é "FEMININO" e a idade é maior ou igual a 10.
+
+gravidez = input("A paciente está grávida? ").upper(): Se o gênero for feminino e a idade for maior ou igual a 10, solicita ao usuário se a paciente está grávida, converte a resposta para letras maiúsculas e armazena o valor na variável gravidez.
+
+if gravidez == "SIM":: Se a resposta sobre a gravidez for "SIM",
+
+print("Paciente com prioridade"): O programa indica que a paciente tem prioridade.
+else:: Se a resposta sobre a gravidez for "NÃO",
+
+print("Paciente sem prioridade"): O programa indica que a paciente não tem prioridade.
+else:: Se o gênero não for "FEMININO" ou a idade for menor que 10,
+
+print("Paciente sem prioridade."): O programa indica que o paciente não tem prioridade.
+print("Resposta ao questionário da idade do paciente."): Independentemente das condições anteriores, esta linha imprime uma mensagem sobre a resposta ao questionário da idade do paciente.
