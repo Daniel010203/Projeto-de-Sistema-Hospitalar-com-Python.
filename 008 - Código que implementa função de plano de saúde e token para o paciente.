@@ -1,0 +1,41 @@
+def informar_plano_saude():
+    possui_plano = input("Você possui plano de saúde? (Sim/Não): ").strip().lower()
+    if possui_plano == 'sim':
+        nome_plano = input("Informe o nome do plano de saúde: ").strip()
+        modalidade = input("Informe a modalidade do plano de saúde: ").strip()
+        tipo_quarto = input("Você prefere quarto particular ou enfermaria? ").strip().lower()
+        if tipo_quarto not in ['quarto particular', 'enfermaria']:
+            print("Tipo de quarto inválido. Por favor, escolha 'quarto particular' ou 'enfermaria'.")
+            return None
+        else:
+            if modalidade == 'app':
+                token_autenticacao = input("Por favor, informe o token de autenticação do app do plano de saúde: ").strip()
+                return {'nome_plano': nome_plano, 'modalidade': modalidade, 'tipo_quarto': tipo_quarto, 'token_autenticacao': token_autenticacao}
+            else:
+                return {'nome_plano': nome_plano, 'modalidade': modalidade, 'tipo_quarto': tipo_quarto}
+    elif possui_plano == 'nao' or possui_plano == 'não':
+        return {'nome_plano': None, 'modalidade': None, 'tipo_quarto': None}
+    else:
+        print("Resposta inválida. Por favor, responda 'sim' ou 'não'.")
+        return None
+
+# Exemplo de uso:
+informacoes_paciente = informar_plano_saude()
+print(informacoes_paciente)
+
+Explicação do código:
+
+1. A função `informar_plano_saude()` é definida para solicitar informações sobre o plano de saúde do paciente.
+2. O programa pede ao usuário para informar se possui um plano de saúde, esperando uma resposta de "sim" ou "não". O texto da entrada é convertido para minúsculas e espaços extras são removidos.
+3. Se o usuário indicar que possui um plano de saúde ("sim"), mais informações são solicitadas:
+   - Nome do plano de saúde.
+   - Modalidade do plano de saúde.
+   - Tipo de quarto preferido (quarto particular ou enfermaria). O texto é convertido para minúsculas e espaços extras são removidos.
+4. O programa verifica se o tipo de quarto fornecido está entre as opções válidas ("quarto particular" ou "enfermaria"). Se não estiver, exibe uma mensagem de erro e retorna `None`.
+5. Se a modalidade do plano for "app", o programa solicita ao usuário que forneça o token de autenticação do aplicativo do plano de saúde.
+6. Todas as informações fornecidas pelo usuário são armazenadas em um dicionário e retornadas.
+7. Se o usuário indicar que não possui um plano de saúde ("não" ou "nao"), o programa retorna um dicionário com valores `None`.
+8. Se o usuário fornecer uma resposta inválida que não seja "sim" ou "não", o programa exibe uma mensagem de erro e retorna `None`.
+9. Fora da função, um exemplo de uso é fornecido, onde as informações fornecidas pelo paciente são armazenadas na variável `informacoes_paciente` e impressas.
+
+Essencialmente, esta função facilita a coleta de informações sobre o plano de saúde do paciente de forma interativa e amigável.
